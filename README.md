@@ -1,6 +1,8 @@
 # ValueObjects
 A PHP Value Object Library in use by Morebec Projects
 
+[![Build Status](https://travis-ci.com/Morebec/ValueObjects.svg?branch=master)](https://travis-ci.com/Morebec/ValueObjects)
+
 Value objects are small objects representing simple concepts, and whose equality is
 based on their internal value rather than a specific identity.
 
