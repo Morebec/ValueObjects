@@ -91,12 +91,16 @@ final class Age implements ValueObjectInterface
 Doing that, our class can be used as follows:
 
 ```php
-function isOldEnough(Age $age): bool {
+function isUserStrictly18(Age $age): bool {
     // We could do the following
-    return $age->isEqualTo(new Age(18));    
+    $maturity = new Age(18);
+    return $age->isEqualTo($maturity);    
 
     // Or
     return $age->toInt() >= 18;
+
+    // Or ...
+    return $age->toInt() >= $maturity->toInt();
 
     // Or even
     return $age === '18';
