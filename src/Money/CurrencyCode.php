@@ -9,7 +9,6 @@ use Morebec\ValueObjects\BasicEnum;
  */
 class CurrencyCode extends BasicEnum
 {
-    
     const ALL = 'ALL';
     const AFN = 'AFN';
     const ARS = 'ARS';
