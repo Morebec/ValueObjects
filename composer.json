@@ -22,7 +22,7 @@
         }
     },
     "scripts": {
-        "test": "php vendor/bin/codecept run",
+        "test": "php vendor/bin/codecept run --coverage-xml",
         "cs-lint": "php-cs-fixer fix src/ --diff -vvv --dry-run",
         "cs-fix": "php-cs-fixer fix src/ -vvv || true"
     }

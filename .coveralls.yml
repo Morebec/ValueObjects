@@ -1,0 +1,2 @@
+service_name: travis-pro
+coverage_clover: tests/_output/coverage.xml
