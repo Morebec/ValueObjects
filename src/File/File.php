@@ -132,9 +132,9 @@ class File implements ValueObjectInterface
      * @param  Path   $path path to the file
      * @return File
      */
-    public function fromPath(Path $path): File
+    public static function fromPath(Path $path): File
     {
-        return is_dir($path) ? new Directory($path) : new File($path);
+        return is_dir($path) ? new Directory($path) : new static($path);
     }
 
     /**
@@ -144,7 +144,7 @@ class File implements ValueObjectInterface
      * @param  string   $path path to the file
      * @return File
      */
-    public function fromStringPath(string $path): File
+    public static function fromStringPath(string $path): File
     {
         return self::fromPath(new Path($path));
     }

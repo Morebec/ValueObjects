@@ -126,6 +126,6 @@ class CurrencyCode extends BasicEnum
 
     public static function fromString(string $code)
     {
-        return new CurrencyCode($code);
+        return new static($code);
     }
 }

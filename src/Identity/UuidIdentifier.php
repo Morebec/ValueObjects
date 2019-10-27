@@ -24,7 +24,7 @@ class UuidIdentifier extends StringBasedValueObject
     public static function generate(): UuidIdentifier
     {
         $id = self::generateUuidV4String();
-        return new UuidIdentifier($id); 
+        return new static($id); 
     }
 
     /**

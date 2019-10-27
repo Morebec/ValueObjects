@@ -251,6 +251,6 @@ class CountryCode extends BasicEnum
 
     public static function fromString(string $code)
     {
-        return new CountryCode($code);
+        return new static($code);
     }
 }
