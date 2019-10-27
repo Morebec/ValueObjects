@@ -3,12 +3,12 @@
 namespace Morebec\ValueObjects\Url;
 
 use Assert\Assertion;
-use Morebec\ValueObjects\ValueObjectInterface;
+use Morebec\ValueObjects\StringBasedValueObject;
 
 /**
  * QueryString
  */
-class QueryString implements ValueObjectInterface
+class QueryString extends StringBasedValueObject
 {
     /** @var string the query string containing ? */
     private $query;
@@ -21,27 +21,7 @@ class QueryString implements ValueObjectInterface
             throw new \InvalidArgumentException("Invalid query string: $queryString");
         }
 
-        $this->query = $queryString;
-    }
-
-    /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
-     * @return boolean                           true if equal otherwise false
-     */
-    public function isEqualTo(ValueObjectInterface $valueObject): bool
-    {
-        return (string)$this === (string)$valueObject;
-    }
-
-    /**
-     * Returns a string representation of the value object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->query;
+        parent::__construct($queryString);
     }
 
     public function toArray(): array

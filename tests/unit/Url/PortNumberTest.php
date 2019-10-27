@@ -29,7 +29,7 @@ class PortNumberTest extends \Codeception\Test\Unit
     public function testPortNumberToIntegerReturnsRightValue(): void
     {
         $portNumber = new PortNumber(5);
-        $this->assertEquals(5, $portNumber->toInteger());
+        $this->assertEquals(5, $portNumber->toInt());
     }
 
     public function testEqulityWithString(): void

@@ -3,36 +3,18 @@
 namespace Morebec\ValueObjects\Password;
 
 use Assert\Assertion;
-use Morebec\ValueObjects\ValueObjectInterface;
+use Morebec\ValueObjects\StringBasedValueObject;
 
 /**
  * Hashed Password
  */
-final class HashedPassword implements ValueObjectInterface
+final class HashedPassword extends StringBasedValueObject
 {
-    /** @var string password */
-    private $password;
-
     public function __construct(string $password)
     {
         // Validate
         Assertion::notBlank($password);
 
-        $this->password = $password;
-    }
-
-    public function __toString()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
-     * @return boolean                           true if equal otherwise false
-     */
-    public function isEqualTo(ValueObjectInterface $valueObject): bool
-    {
-        return ((string)$this) == ((string)$valueObject);
+        parent::__construct($password);
     }
 }

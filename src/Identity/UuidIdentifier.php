@@ -3,35 +3,18 @@
 namespace Morebec\ValueObjects\Identity;
 
 use Assert\Assertion;
-use Morebec\ValueObjects\ValueObjectInterface;
+use Morebec\ValueObjects\StringBasedValueObject;
 
 /**
  * UuidIdentifier
  */
-class UuidIdentifier implements ValueObjectInterface
+class UuidIdentifier extends StringBasedValueObject
 {
-    private $identifier;
 
     function __construct(string $identifier)
     {
         Assertion::uuid($identifier);
-        
-        $this->identifier = $identifier;
-    }
-
-    public function __toString()
-    {
-        return $this->identifier;
-    }
-
-    /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
-     * @return boolean                           true if equal otherwise false
-     */
-    public function isEqualTo(ValueObjectInterface $valueObject): bool
-    {
-        return (string)$this === (string)$valueObject;
+        parent::__construct($identifier);        
     }
 
     /**

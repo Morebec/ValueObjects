@@ -33,7 +33,7 @@ class UrlTest extends \Codeception\Test\Unit
     {
         $url = new Url('https://user:pass@google.com:8080?q=search');
 
-        $this->assertEquals(8080, $url->getPortNumber()->toInteger());
+        $this->assertEquals(8080, $url->getPortNumber()->toInt());
     }
 
     public function testEmptyPortNumberDetected(): void

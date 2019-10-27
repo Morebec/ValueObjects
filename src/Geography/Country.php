@@ -14,7 +14,7 @@ class Country implements ValueObjectInterface
 
     function __construct(string $countryCode)
     {
-        $this->code = $countryCode;
+        $this->code = new CountryCode($countryCode);
     }
 
     public function getCode(): CountryCode
@@ -39,7 +39,7 @@ class Country implements ValueObjectInterface
      */
     public function __toString()
     {
-        return $this->code;
+        return (string)$this->code;
     }
 
     /**

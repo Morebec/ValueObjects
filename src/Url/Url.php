@@ -3,72 +3,54 @@
 namespace Morebec\ValueObjects\Url;
 
 use Assert\Assertion;
-use Morebec\ValueObjects\ValueObjectInterface;
+use Morebec\ValueObjects\StringBasedValueObject;
 
 /**
  * Url
  */
-class Url implements ValueObjectInterface
+class Url extends StringBasedValueObject
 {
-    /** @var string full url */
-    private $url;
-
     function __construct(string $url)
     {
         Assertion::url($url);
 
-        $this->url = $url;
-    }
-
-    public function __toString()
-    {
-        return $this->url;
+        parent::__construct($url);
     }
 
     public function getHostname(): Hostname
     {
-        $host = \parse_url($this->url, PHP_URL_HOST);
+        $host = \parse_url($this->value, PHP_URL_HOST);
         return new Hostname($host);
     }
 
     public function getQueryString(): ?QueryString
     {
-        $queryString = \parse_url($this->url, PHP_URL_QUERY);
+        $queryString = \parse_url($this->value, PHP_URL_QUERY);
         return $queryString ? new QueryString("?$queryString") : null;
     }
 
     public function getFragment(): ?Fragment
     {
-        $fragment  = \parse_url($this->url, PHP_URL_FRAGMENT);
+        $fragment  = \parse_url($this->value, PHP_URL_FRAGMENT);
         return $fragment ? new Fragment("#$fragment") : null;
     }
 
     public function getUsername(): string
     {
-        $user = \parse_url($this->url, PHP_URL_USER);
+        $user = \parse_url($this->value, PHP_URL_USER);
         return $user ? $user : '';
     }
 
     public function getPassword(): string
     {
-        $password = \parse_url($this->url, PHP_URL_PASS);
+        $password = \parse_url($this->value, PHP_URL_PASS);
         return $password ? $password : '';
     }
 
     public function getPortNumber(): ?PortNumber
     {
-        $port = \parse_url($this->url, PHP_URL_PORT);
+        $port = \parse_url($this->value, PHP_URL_PORT);
 
         return $port ? new PortNumber($port) : null;
-    }
-
-    /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
-     * @return boolean                           true if equal otherwise false
-     */
-    public function isEqualTo(ValueObjectInterface $valueObject): bool
-    {
-        return (string)$this === (string)$valueObject;
     }
 }
