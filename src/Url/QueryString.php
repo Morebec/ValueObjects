@@ -10,9 +10,6 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class QueryString extends StringBasedValueObject
 {
-    /** @var string the query string containing ? */
-    private $query;
-
     function __construct(string $queryString)
     {
         Assertion::startsWith($queryString, '?');
@@ -26,6 +23,15 @@ class QueryString extends StringBasedValueObject
 
     public function toArray(): array
     {
-        throw new \Exception("Unimplemented method");
+        $query = str_replace('?', '', $this->value);
+        $groups = explode('&', $query);
+
+        $arr = [];
+        foreach ($groups as $group) {
+            list($key, $value)= explode('=', $group);
+            $arr[$key] = $value;
+        }
+
+        return $arr;
     }
 }
