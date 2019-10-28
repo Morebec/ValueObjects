@@ -28,4 +28,12 @@ class TimeUnit extends BasicEnum
         static::validateValue($method);
         return new static($method);
     }
+
+    public static function fromString(string $name): TimeUnit
+    {
+        $name = strtoupper($name);
+        Assertion::notBlank($name);
+        // Further validation is made in constructor
+        return new static($name);
+    }
 }

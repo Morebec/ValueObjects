@@ -2,6 +2,7 @@
 
 namespace Morebec\ValueObjects\DateTime\Time;
 
+use Assert\Assertion;
 use Morebec\ValueObjects\ValueObjectInterface;
 
 /**
@@ -35,7 +36,7 @@ class Frequency implements ValueObjectInterface
      */
     public function __toString()
     {
-        return sprintf("%s x %s", $this->nbTImes, (string)$this->amount);
+        return sprintf("%s x %s", $this->nbTimes, (string)$this->amount);
     }
 
     public function getNbTimes(): int
@@ -54,5 +55,53 @@ class Frequency implements ValueObjectInterface
     public function getUnit(): Unit
     {
         return $this->amount->getUnit();
+    }
+
+    /**
+     * Returns a frequency object from a frequency notation string
+     * Example "1 x 1 DAY" => once every day
+     * Example "2 x 1 YEAR" => twice every year
+     * Example "3 x 2 MONTH" => three times every two months
+     * @param  string $frequency [description]
+     * @return [type]            [description]
+     */
+    public function fromString(string $frequency): Frequency
+    {
+        Assertion::notBlank($frequency);
+
+        // Make sure it is upper string for time unit constants
+        $frequency = strtoupper($frequency);
+
+        // Parse string according to "x" symbol
+        try {
+            list($nbTimes, $timeAmount) = explode('X', $frequency);
+        } catch (\Exception $e) {
+            throw new \InvalidArgumentException(
+                "Malformed frequency string: No 'x' character found in '$frequency'"
+            );
+        }
+
+        // Validate Number of times
+        $nbTimes = trim($nbTimes);
+        Assertion::numeric($nbTimes);
+        $nbTimes = intval($nbTimes);
+
+        // Validate time amount
+        Assertion::notBlank($timeAmount, 
+            "Malformed frequency string: The time amount portion of the string could not be parsed in '$frequency'"
+        );
+        $timeAmount = trim($timeAmount);
+
+        try {
+            list($amount, $unit) = explode(' ', $timeAmount);
+        } catch (\Exception $e) {
+            throw new \InvalidArgumentException(
+                "Malformed frequency string: The time amount portion of the string could not be parsed, because no space character was found between the amount and the unit in '$frequency'"
+            );
+        }
+        Assertion::numeric($amount);
+        $amount = floatval($amount);
+
+        return new Frequency($nbTimes, new TimeAmount($amount, TimeUnit::fromString($unit)));
     }
 }
