@@ -11,7 +11,7 @@ class Directory extends File
      * Returns the files contained in the directory
      * @return array
      */
-    public function getFiles(): array
+    public function getFiles(): \Generator
     {
         $path = $this->getRealpath();
         $systemFiles = scandir($path);
@@ -21,10 +21,21 @@ class Directory extends File
         $files = [];
 
         foreach ($systemFiles as $file) {
-            # code...
-            $files[] = self::fromStringPath($path . '/' . $file);
+            yield self::fromStringPath($path . '/' . $file);
+        }
+    }
+
+    /**
+     * Returns the number of files in the direcotry
+     * @return int
+     */
+    public function getNbFiles(): int
+    {
+        $c = 0; 
+        foreach ($this->getFiles() as $f) {
+            $c++;
         }
 
-        return $files;
+        return $c;
     }
 }

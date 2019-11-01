@@ -14,9 +14,12 @@ class DirectoryTest extends \Codeception\Test\Unit
 
         $files = $d->getFiles();
 
-        $this->assertTrue(count($files) != 0);
+        $count = 0;
         foreach ($files as $file) {
+            $count++;
             $this->assertTrue($file->exists());
         }
+
+        $this->assertNotEquals(0, $count);
     }
 }
