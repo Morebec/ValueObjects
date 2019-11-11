@@ -7,18 +7,6 @@ use Morebec\ValueObjects\Person\Fullname;
  */
 class FullnameTest extends \Codeception\Test\Unit
 {
-    public function testBlankFirstNameThrowsException()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $name = new Fullname('', 'lastname');
-    }
-
-    public function testBlankLastNameThrowsException()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $name = new Fullname('firstname', '');
-    }
-
     public function testFirstNameTooShortThrowsException()
     {
         $this->expectException(\InvalidArgumentException::class);

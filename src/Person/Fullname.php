@@ -18,10 +18,13 @@ final class Fullname implements ValueObjectInterface
 
     public function __construct(string $firstname, string $lastname)
     {
-        Assertion::minLength($firstname, 2);
-        Assertion::minLength($lastname, 2);
-        Assertion::notBlank($firstname);
-        Assertion::notBlank($lastname);
+        if($firstname !== '') {
+            Assertion::minLength($firstname, 2);
+        }
+
+        if ($lastname !== '') {
+            Assertion::minLength($lastname, 2);
+        }
 
         $this->firstname = $firstname;
         $this->lastname = $lastname;
