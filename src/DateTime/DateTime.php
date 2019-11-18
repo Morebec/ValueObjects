@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Morebec\ValueObjects\ValueObjectInterface;
 
@@ -13,7 +13,7 @@ class DateTime implements ValueObjectInterface
     /** @var Time */
     private $time;
 
-    function __construct(Date $date, Time $time)
+    public function __construct(Date $date, Time $time)
     {
         $this->date = $date;
 

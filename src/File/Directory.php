@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\File;
 
@@ -31,7 +31,7 @@ class Directory extends File
      */
     public function getNbFiles(): int
     {
-        $c = 0; 
+        $c = 0;
         foreach ($this->getFiles() as $f) {
             $c++;
         }

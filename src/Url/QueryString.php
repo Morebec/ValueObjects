@@ -10,7 +10,7 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class QueryString extends StringBasedValueObject
 {
-    function __construct(string $queryString)
+    public function __construct(string $queryString)
     {
         Assertion::startsWith($queryString, '?');
 

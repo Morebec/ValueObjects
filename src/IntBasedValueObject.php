@@ -36,5 +36,4 @@ abstract class IntBasedValueObject implements ValueObjectInterface
     {
         return ((string)$this) == ((string)$valueObject);
     }
-
 }

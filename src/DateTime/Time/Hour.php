@@ -13,7 +13,7 @@ class Hour extends IntBasedValueObject
     /** There are 24 hours in a day (0-23) */
     const MAX_NUMBER = 23;
     
-    function __construct(int $nthHour)
+    public function __construct(int $nthHour)
     {
         Assertion::between($nthHour, 0, self::MAX_NUMBER);
         parent::__construct($nthHour);

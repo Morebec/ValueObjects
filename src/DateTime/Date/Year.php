@@ -13,7 +13,7 @@ use Morebec\ValueObjects\IntBasedValueObject;
  */
 class Year extends IntBasedValueObject
 {
-    function __construct(int $yearNumber)
+    public function __construct(int $yearNumber)
     {
         Assertion::notEq($yearNumber, 0);
         parent::__construct($yearNumber);

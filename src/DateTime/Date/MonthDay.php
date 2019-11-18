@@ -13,7 +13,7 @@ class MonthDay extends IntBasedValueObject
     const MIN_MONTH_DAY = 1;
     const MAX_MONTH_DAY = 31;
 
-    function __construct(int $nbdays)
+    public function __construct(int $nbdays)
     {
         Assertion::between($nbdays, self::MIN_MONTH_DAY, self::MAX_MONTH_DAY);
         parent::__construct($nbdays);

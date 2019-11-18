@@ -15,7 +15,6 @@ final class EmailAddress extends StringBasedValueObject
         Assertion::email($address);
 
         parent::__construct(strtolower($address));
-
     }
 
     public function getDomain(): string

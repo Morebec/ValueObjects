@@ -10,9 +10,9 @@ use Morebec\ValueObjects\ValueObjectInterface;
  */
 class Hostname extends StringBasedValueObject
 {
-    function __construct(string $host)
+    public function __construct(string $host)
     {
-        if(!filter_var($host, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
+        if (!filter_var($host, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
             throw new \InvalidArgumentException("Invalid hostname $host");
         }
 

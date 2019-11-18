@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\DateTime\Time;
 
@@ -19,7 +19,7 @@ class Time implements ValueObjectInterface
     /** @var Second */
     private $s;
 
-    function __construct(Hour $h, Minute $m, Second $s)
+    public function __construct(Hour $h, Minute $m, Second $s)
     {
         $this->h = $h;
         $this->m = $m;
@@ -104,8 +104,8 @@ class Time implements ValueObjectInterface
     public function endOfDay(): Time
     {
         return new static(
-            new Hour(Hour::MAX_NUMBER), 
-            new Minute(Minute::MAX_NUMBER), 
+            new Hour(Hour::MAX_NUMBER),
+            new Minute(Minute::MAX_NUMBER),
             new Second(SECOND::MAX_NUMBER)
         );
     }

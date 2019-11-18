@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\Text;
 
@@ -9,10 +9,9 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Char extends StringBasedValueObject
 {
-    function __construct(string $char)
+    public function __construct(string $char)
     {
         Assertion::length($char, 1);
         parent::__construct($char);
     }
 }
-

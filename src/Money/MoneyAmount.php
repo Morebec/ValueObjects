@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\Money;
 
@@ -15,7 +15,7 @@ class MoneyAmount implements ValueObjectInterface
     /** @var Currency */
     private $currency;
 
-    function __construct(float $amount, Currency $currency)
+    public function __construct(float $amount, Currency $currency)
     {
         $this->amount = $amount;
         $this->currency = $currency;

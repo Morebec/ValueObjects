@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\Money;
 
@@ -12,7 +12,7 @@ class Currency implements ValueObjectInterface
     /** @var CurrencyCode */
     private $code;
 
-    function __construct(CurrencyCode $code)
+    public function __construct(CurrencyCode $code)
     {
         $this->code = $code;
     }

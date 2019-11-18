@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\File;
 
@@ -45,7 +45,7 @@ class File implements ValueObjectInterface
      */
     public function getRealpath(): Path
     {
-        if(!$this->exists()) {
+        if (!$this->exists()) {
             return new Path($this->path);
         }
 
@@ -97,14 +97,14 @@ class File implements ValueObjectInterface
      */
     public function getDirectory(): ?Directory
     {
-        if(!$this->exists()) {
+        if (!$this->exists()) {
             return null;
         }
         return new Directory(new Path($this->getDirectoryName()));
     }
 
     /**
-     * Returns the extension of a file or null if the file does not 
+     * Returns the extension of a file or null if the file does not
      * have an extension.
      * @return Extension|null
      */

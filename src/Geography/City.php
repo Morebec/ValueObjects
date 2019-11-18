@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 namespace Morebec\ValueObjects\Geography;
 
@@ -10,7 +10,7 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class City extends StringBasedValueObject
 {
-    function __construct(string $city)
+    public function __construct(string $city)
     {
         Assertion::notBlank($city);
         parent::__construct($city);

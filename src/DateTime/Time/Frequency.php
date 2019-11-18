@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\DateTime\Time;
 
@@ -13,7 +13,7 @@ use Morebec\ValueObjects\ValueObjectInterface;
  */
 class Frequency implements ValueObjectInterface
 {
-    function __construct(int $nbTimes, TimeAmount $amount)
+    public function __construct(int $nbTimes, TimeAmount $amount)
     {
         $this->nbTimes = $nbTimes;
         $this->amount = $amount;
@@ -87,7 +87,8 @@ class Frequency implements ValueObjectInterface
         $nbTimes = intval($nbTimes);
 
         // Validate time amount
-        Assertion::notBlank($timeAmount, 
+        Assertion::notBlank(
+            $timeAmount,
             "Malformed frequency string: The time amount portion of the string could not be parsed in '$frequency'"
         );
         $timeAmount = trim($timeAmount);

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\DateTime\Time;
 
@@ -15,7 +15,7 @@ class TimeAmount implements ValueObjectInterface
     /** @var TimeUnit */
     private $unit;
 
-    function __construct(float $amount, TimeUnit $unit)
+    public function __construct(float $amount, TimeUnit $unit)
     {
         $this->amount = $amount;
         $this->unit = $unit;
@@ -62,7 +62,7 @@ class TimeAmount implements ValueObjectInterface
      * given that:
      * - a month is 4 weeks
      * - a year is 365 days
-     * 
+     *
      * @param  TimeUnit $unit new unit
      * @return TimeUnit
      */

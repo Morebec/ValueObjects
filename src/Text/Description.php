@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\Text;
 
@@ -9,7 +9,7 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Description extends StringBasedValueObject
 {
-    function __construct(string $description)
+    public function __construct(string $description)
     {
         parent::__construct($description);
     }
@@ -24,4 +24,3 @@ class Description extends StringBasedValueObject
         return strpos($this->value, $subString) !== false;
     }
 }
-

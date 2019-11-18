@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\Text;
 
@@ -9,7 +9,7 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Word extends StringBasedValueObject
 {
-    function __construct(string $word)
+    public function __construct(string $word)
     {
         Assertion::notBlank($word);
         Assertion::notContains($word, ' ', 'A word cannot contain a space " " character');
@@ -24,11 +24,10 @@ class Word extends StringBasedValueObject
     {
         $chars = [];
         
-        for ($i=0; $i < strlen($this->value); $i++) { 
+        for ($i=0; $i < strlen($this->value); $i++) {
             $chars[] = new Char($this->value[$i]);
         }
 
         return $chars;
     }
 }
-

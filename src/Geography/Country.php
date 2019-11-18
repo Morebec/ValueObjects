@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\Geography;
 
@@ -12,7 +12,7 @@ class Country implements ValueObjectInterface
     /** @var CountryCode */
     private $code;
 
-    function __construct(string $countryCode)
+    public function __construct(string $countryCode)
     {
         $this->code = new CountryCode($countryCode);
     }

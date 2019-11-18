@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\File;
 
@@ -9,7 +9,7 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Extension extends StringBasedValueObject
 {
-    function __construct(string $extension)
+    public function __construct(string $extension)
     {
         parent::__construct($extension);
     }

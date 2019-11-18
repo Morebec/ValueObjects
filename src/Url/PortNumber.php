@@ -16,7 +16,7 @@ class PortNumber extends IntBasedValueObject
     /** Maximum port number */
     const MAX_PORT_NUMBER = 65535;
 
-    function __construct(int $port)
+    public function __construct(int $port)
     {
         Assertion::between($port, self::MIN_PORT_NUMBER, self::MAX_PORT_NUMBER);
         parent::__construct($port);

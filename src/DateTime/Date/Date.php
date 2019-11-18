@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\DateTime\Date;
 
@@ -18,7 +18,7 @@ class Date implements ValueObjectInterface
     /** @var Day */
     private $day;
 
-    function __construct(Year $year, Month $month, Day $day)
+    public function __construct(Year $year, Month $month, Day $day)
     {
         $this->year = $year;
         $this->month = $month;

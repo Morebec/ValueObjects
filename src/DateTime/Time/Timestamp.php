@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\DateTime\Time;
 
@@ -9,7 +9,7 @@ use Assert\Assertion;
  */
 class Timestamp extends IntBasedValueObject
 {
-    function __construct(int $timestamp)
+    public function __construct(int $timestamp)
     {
         Assertion::min(0);
         parent::__construct($timestamp);

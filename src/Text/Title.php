@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\Text;
 
@@ -9,9 +9,8 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Title extends StringBasedValueObject
 {
-    function __construct(string $title)
+    public function __construct(string $title)
     {
         parent::__construct($title);
     }
 }
-

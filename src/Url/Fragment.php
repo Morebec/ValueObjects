@@ -10,7 +10,7 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Fragment extends StringBasedValueObject
 {
-    function __construct(string $fragmentString)
+    public function __construct(string $fragmentString)
     {
         Assertion::startsWith($fragmentString, '#');
 

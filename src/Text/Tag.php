@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\Text;
 
@@ -9,9 +9,8 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Tag extends StringBasedValueObject
 {
-    function __construct(string $tag)
+    public function __construct(string $tag)
     {
         parent::__construct($tag);
     }
 }
-

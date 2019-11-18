@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Morebec\ValueObjects\File;
 
@@ -9,7 +9,7 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class FileContent extends StringBasedValueObject
 {
-    function __construct(string $content)
+    public function __construct(string $content)
     {
         parent::__construct($content);
     }

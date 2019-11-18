@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 namespace Morebec\ValueObjects\Url;
 
@@ -10,7 +10,7 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Url extends StringBasedValueObject
 {
-    function __construct(string $url)
+    public function __construct(string $url)
     {
         Assertion::url($url);
 
