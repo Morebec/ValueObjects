@@ -92,20 +92,17 @@ final class Age implements ValueObjectInterface
 Doing that, our class can be used as follows:
 
 ```php
-function isUserStrictly18(Age $age): bool {
-    // We could do the following
-    $maturity = new Age(18);
-    return $age->isEqualTo($maturity);    
+$age = new Age(24);
 
-    // Or
-    return $age->toInt() >= 18;
+// Test Equality
+$maturity = new Age(18);
+$age->isEqualTo($maturity); // false  
+$age == $maturity; // false
+$age === '18'; // false
 
-    // Or ...
-    return $age->toInt() >= $maturity->toInt();
-
-    // Or even
-    return $age === '18';
-}
+// Test Greater than
+$age->toInt() >= 18; // true
+$age->toInt() >= $maturity->toInt();
 
 ```
 
@@ -123,7 +120,7 @@ use Morebec\ValueObjects\ValueObjectInterface;
 /**
  * CardinalPoint
  */
-class DomainValue implements ValueObjectInterface
+class CardinalPoint implements ValueObjectInterface
 {
     const NORTH = 'NORTH';    
     const EAST = 'EAST';    
@@ -141,9 +138,10 @@ $direction = new CardinalPoint(CardinalPoint::NORTH);
 // Since Enums have builtin validation,
 // the following line would throw an InvalidArgumentException:
 $direction = new CardinalPoint('North');
+// However the following would work:
+$direction = new CardinalPoint('NORTH');
 
-
-// Using in functions or class methods parameters 
+// Using in functions or class methods 
 public function changeDirection(CardinalPoint $direction)
 {
     // Testing equlity with string
@@ -153,7 +151,7 @@ public function changeDirection(CardinalPoint $direction)
 
     // Since the constants are strings, it is also possible to compare
     // using string comparison
-    if($direction === CardinalPoint::NORTH) {
+    if($direction == CardinalPoint::NORTH) {
         echo 'Definitely going North!';
     }    
 }
@@ -167,3 +165,5 @@ To run the tests simply run:
 ```bash
 composer test
 ```
+
+
