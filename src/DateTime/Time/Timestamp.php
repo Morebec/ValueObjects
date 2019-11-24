@@ -3,6 +3,7 @@
 namespace Morebec\ValueObjects\DateTime\Time;
 
 use Assert\Assertion;
+use Morebec\ValueObjects\IntBasedValueObject;
 
 /**
  * Represents a Timestamp
@@ -11,7 +12,7 @@ class Timestamp extends IntBasedValueObject
 {
     public function __construct(int $timestamp)
     {
-        Assertion::min(0);
+        Assertion::min($timestamp, 0);
         parent::__construct($timestamp);
     }
 
