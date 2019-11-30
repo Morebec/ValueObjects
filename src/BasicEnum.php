@@ -120,4 +120,14 @@ abstract class BasicEnum implements ValueObjectInterface
     {
         return self::getConstants();
     }
+    
+    /**
+     * Used so it is poossible to do things like
+     * Enum::VALUE()
+     */
+    public static function __callStatic($method, $arguments)
+    {
+        static::validateValue($method);
+        return new static($method);
+    }
 }

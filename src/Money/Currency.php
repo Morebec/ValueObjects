@@ -24,7 +24,7 @@ class Currency implements ValueObjectInterface
 
     /**
      * Used so it is poossible to do things like
-     * Currency::CAD()
+     * Currency::CAD() using the currency code
      */
     public static function __callStatic($method, $arguments)
     {
