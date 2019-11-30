@@ -77,14 +77,4 @@ class WeekDay extends BasicEnum
 
         return new static($weekDayName);
     }
-
-    /**
-     * Used so it is poossible to do things like
-     * WeekDay::MONDAY()
-     */
-    public static function __callStatic($method, $arguments)
-    {
-        static::validateValue($method);
-        return new static($method);
-    }
 }

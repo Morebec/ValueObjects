@@ -19,16 +19,6 @@ class TimeUnit extends BasicEnum
     const MONTH = 'MONTH';
     const YEAR = 'YEAR';
 
-    /**
-     * Used so it is poossible to do things like
-     * WeekDay::MONDAY()
-     */
-    public static function __callStatic($method, $arguments)
-    {
-        static::validateValue($method);
-        return new static($method);
-    }
-
     public static function fromString(string $name): TimeUnit
     {
         $name = strtoupper($name);

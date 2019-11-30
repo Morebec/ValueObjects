@@ -44,7 +44,7 @@ class Country implements ValueObjectInterface
 
     /**
      * Used so it is poossible to do things like
-     * Country::US()
+     * Country::US() by using the Country code
      */
     public static function __callStatic($method, $arguments)
     {

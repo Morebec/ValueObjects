@@ -88,16 +88,6 @@ class Month extends BasicEnum
     }
 
     /**
-     * Used so it is poossible to do things like
-     * Month::January()
-     */
-    public static function __callStatic($method, $arguments)
-    {
-        static::validateValue($method);
-        return new static($method);
-    }
-
-    /**
      * Returns the current month
      * @return Month
      */
