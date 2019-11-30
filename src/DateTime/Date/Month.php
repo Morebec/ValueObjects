@@ -7,6 +7,19 @@ use Morebec\ValueObjects\BasicEnum;
 
 /**
  * Represents a certain month in a year
+ *
+ * @method static Month JANUARY()
+ * @method static Month FEBRUARY()
+ * @method static Month MARCH()
+ * @method static Month APRIL()
+ * @method static Month MAY()
+ * @method static Month JUNE()
+ * @method static Month JULY()
+ * @method static Month AUGUST()
+ * @method static Month SEPTEMBER()
+ * @method static Month OCTOBER()
+ * @method static Month NOVEMBER()
+ * @method static Month DECEMBER()
  */
 class Month extends BasicEnum
 {
@@ -25,9 +38,9 @@ class Month extends BasicEnum
 
     /**
      * Returns a month from its number
-     * e.g. Januery =, February = 2
+     * e.g. Januery = 1, February = 2
      * @param  int    $monthNumber number of the month
-     * @return [type]              [description]
+     * @return Month
      */
     public function fromNumber(int $monthNumber): Month
     {
@@ -85,8 +98,8 @@ class Month extends BasicEnum
     }
 
     /**
-     * Returns the current year
-     * @return Year
+     * Returns the current month
+     * @return Month
      */
     public static function now(): Month
     {

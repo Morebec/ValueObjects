@@ -64,7 +64,7 @@ class TimeAmount implements ValueObjectInterface
      * - a year is 365 days
      *
      * @param  TimeUnit $unit new unit
-     * @return TimeUnit
+     * @return TimeAmount amount with new unit
      */
     public function convertToUnit(TimeUnit $unit): TimeAmount
     {

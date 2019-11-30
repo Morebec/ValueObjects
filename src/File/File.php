@@ -2,6 +2,7 @@
 
 namespace Morebec\ValueObjects\File;
 
+use Exception;
 use Morebec\ValueObjects\ValueObjectInterface;
 
 /**
@@ -31,7 +32,7 @@ class File implements ValueObjectInterface
 
     /**
      * Indicates if a file exists or not
-     * @return [type] [description]
+     * @return bool
      */
     public function exists(): bool
     {
@@ -48,8 +49,12 @@ class File implements ValueObjectInterface
         if (!$this->exists()) {
             return new Path($this->path);
         }
-
-        return new Path(realpath($this->path));
+        $pathStr = realpath($this->path);
+        if (!$pathStr) {
+            throw new Exception('Invalid path: ' . $this->path);
+        }
+        
+        return new Path($pathStr);
     }
 
     /**
@@ -59,6 +64,12 @@ class File implements ValueObjectInterface
     public function getContent(): FileContent
     {
         $content = !$this->exists() ? '' : file_get_contents($this->path);
+        if (!$content) {
+            throw new Exception(
+                'Failed to load content of file: ' . $this->path
+            );
+        }
+        
         return new FileContent($content);
     }
 
@@ -85,7 +96,7 @@ class File implements ValueObjectInterface
      * if the file does not exists return null
      * @return Path|null
      */
-    public function getDirectoryName(): ?Path
+    public function getDirectoryPath(): ?Path
     {
         return !$this->exists() ? null : new Path(pathinfo($this->path, PATHINFO_DIRNAME));
     }
@@ -100,7 +111,14 @@ class File implements ValueObjectInterface
         if (!$this->exists()) {
             return null;
         }
-        return new Directory(new Path($this->getDirectoryName()));
+        
+        $path = $this->getDirectoryPath();
+        
+        if (!$path) {
+            throw new \Exception("Could not find path for file: " . $this->path);
+        }
+        
+        return new Directory($path);
     }
 
     /**

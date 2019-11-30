@@ -70,7 +70,7 @@ class Time implements ValueObjectInterface
 
     /**
      * Returns the secounds of the time
-     * @return [type] [description]
+     * @return Second
      */
     public function getSecond(): Second
     {
@@ -106,7 +106,7 @@ class Time implements ValueObjectInterface
         return new static(
             new Hour(Hour::MAX_NUMBER),
             new Minute(Minute::MAX_NUMBER),
-            new Second(SECOND::MAX_NUMBER)
+            new Second(Second::MAX_NUMBER)
         );
     }
 }

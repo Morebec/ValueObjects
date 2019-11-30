@@ -20,6 +20,11 @@ class Url extends StringBasedValueObject
     public function getHostname(): Hostname
     {
         $host = \parse_url($this->value, PHP_URL_HOST);
+        
+        if (!$host) {
+            $host = '';
+        }
+        
         return new Hostname($host);
     }
 

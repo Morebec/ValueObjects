@@ -3,6 +3,8 @@
 namespace Morebec\ValueObjects\DateTime\Time;
 
 use Assert\Assertion;
+use Exception;
+use InvalidArgumentException;
 use Morebec\ValueObjects\ValueObjectInterface;
 
 /**
@@ -13,10 +15,20 @@ use Morebec\ValueObjects\ValueObjectInterface;
  */
 class Frequency implements ValueObjectInterface
 {
+    /**
+     * @var TimeAmount
+     */
+    private $amount;
+
+    /**
+     * @var int
+     */
+    private $nbTimes;
+
     public function __construct(int $nbTimes, TimeAmount $amount)
     {
-        $this->nbTimes = $nbTimes;
         $this->amount = $amount;
+        $this->nbTimes = $nbTimes;
     }
 
     /**
@@ -45,14 +57,14 @@ class Frequency implements ValueObjectInterface
     }
 
     /**
-     * @return int
+     * @return TimeAmount
      */
-    public function getAmount(): int
+    public function getAmount(): TimeAmount
     {
-        return $this->amount->getAmount();
+        return $this->amount;
     }
 
-    public function getUnit(): Unit
+    public function getUnit(): TimeUnit
     {
         return $this->amount->getUnit();
     }
@@ -62,8 +74,8 @@ class Frequency implements ValueObjectInterface
      * Example "1 x 1 DAY" => once every day
      * Example "2 x 1 YEAR" => twice every year
      * Example "3 x 2 MONTH" => three times every two months
-     * @param  string $frequency [description]
-     * @return [type]            [description]
+     * @param  string $frequency frequency string
+     * @return Frequency
      */
     public function fromString(string $frequency): Frequency
     {
@@ -75,8 +87,8 @@ class Frequency implements ValueObjectInterface
         // Parse string according to "x" symbol
         try {
             list($nbTimes, $timeAmount) = explode('X', $frequency);
-        } catch (\Exception $e) {
-            throw new \InvalidArgumentException(
+        } catch (Exception $e) {
+            throw new InvalidArgumentException(
                 "Malformed frequency string: No 'x' character found in '$frequency'"
             );
         }
@@ -95,8 +107,8 @@ class Frequency implements ValueObjectInterface
 
         try {
             list($amount, $unit) = explode(' ', $timeAmount);
-        } catch (\Exception $e) {
-            throw new \InvalidArgumentException(
+        } catch (Exception $e) {
+            throw new InvalidArgumentException(
                 "Malformed frequency string: The time amount portion of the string could not be parsed, because no space character was found between the amount and the unit in '$frequency'"
             );
         }

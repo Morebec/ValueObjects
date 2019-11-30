@@ -46,6 +46,11 @@ class Color implements ValueObjectInterface
 
         list($r, $g, $b, $a) = array_map('hexdec', str_split($hex, 2));
 
+        $r = \intval($r);
+        $g = \intval($g);
+        $b = \intval($b);
+        $a = \intval($a);
+        
         return new Color($r, $g, $b, $a);
     }
 
@@ -82,7 +87,7 @@ class Color implements ValueObjectInterface
      */
     public function getR(): int
     {
-        return $this->red;
+        return $this->r;
     }
 
     /**
@@ -90,7 +95,7 @@ class Color implements ValueObjectInterface
      */
     public function getG(): int
     {
-        return $this->green;
+        return $this->g;
     }
 
     /**
@@ -98,7 +103,7 @@ class Color implements ValueObjectInterface
      */
     public function getB(): int
     {
-        return $this->blue;
+        return $this->b;
     }
 
     /**

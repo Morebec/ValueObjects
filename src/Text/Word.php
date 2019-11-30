@@ -2,6 +2,7 @@
 
 namespace Morebec\ValueObjects\Text;
 
+use Assert\Assertion;
 use Morebec\ValueObjects\StringBasedValueObject;
 
 /**

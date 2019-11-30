@@ -21,9 +21,9 @@ class MonthDay extends IntBasedValueObject
 
     /**
      * Returns the current year
-     * @return Year
+     * @return MonthDay
      */
-    public static function now(): Year
+    public static function now(): MonthDay
     {
         return new static(date('d'));
     }

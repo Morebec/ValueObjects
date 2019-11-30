@@ -8,6 +8,14 @@ use Morebec\ValueObjects\IntBasedValueObject;
 
 /**
  * Represents a certain day of the week
+ *
+ * @method static WeekDay MONDAY()
+ * @method static WeekDay TUESDAY()
+ * @method static WeekDay WEDNESDAY()
+ * @method static WeekDay THURSDAY()
+ * @method static WeekDay FRIDAY()
+ * @method static WeekDay SATURDAY()
+ * @method static WeekDay SUNDAY()
  */
 class WeekDay extends BasicEnum
 {
@@ -49,7 +57,7 @@ class WeekDay extends BasicEnum
     /**
      * Returns a Month instance from a string
      * @param  string $month month
-     * @return Month
+     * @return WeekDay
      */
     public static function fromString(string $month): WeekDay
     {
@@ -61,7 +69,7 @@ class WeekDay extends BasicEnum
 
     /**
      * Returns the current year
-     * @return Year
+     * @return WeekDay
      */
     public static function now(): WeekDay
     {

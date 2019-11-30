@@ -30,7 +30,7 @@ class UuidIdentifier extends StringBasedValueObject
      * Generates a valid Uuid v4 string
      * @return string
      */
-    private function generateUuidV4String(): string
+    private static function generateUuidV4String(): string
     {
         $data = random_bytes(16);
         $data[6] = chr(ord($data[6]) & 0x0f | 0x40);

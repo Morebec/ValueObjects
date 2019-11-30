@@ -30,7 +30,9 @@ class FileTest extends Codeception\Test\Unit
     public function testGetContentOnFileNotExisting(): void
     {
         $f = new File(new Path('does not exist'));
-        $this->assertFalse(strpos($f->getContent(), 'FileTest') !== false);
+        
+        $this->expectException(\Exception::class);
+        $f->getContent();
     }
 
     public function testGetFilename(): void
@@ -63,13 +65,13 @@ class FileTest extends Codeception\Test\Unit
     public function testGetDirectoryName(): void
     {
         $f = new File(new Path(__FILE__));
-        $this->assertEquals(__DIR__, $f->getDirectoryName());
+        $this->assertEquals(__DIR__, $f->getDirectoryPath());
     }
 
     public function testGetDirectoryNameOnFileNotExisting(): void
     {
         $f = new File(new Path('does not exist'));
-        $this->assertEquals(null, $f->getDirectoryName());
+        $this->assertEquals(null, $f->getDirectoryPath());
     }
 
     public function testGetDirectory(): void

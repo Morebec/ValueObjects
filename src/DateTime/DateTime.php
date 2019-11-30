@@ -1,5 +1,9 @@
 <?php
 
+namespace Morebec\ValueObjects\DateTime;
+
+use Morebec\ValueObjects\DateTime\Date\Date;
+use Morebec\ValueObjects\DateTime\Time\Time;
 use Morebec\ValueObjects\ValueObjectInterface;
 
 /**
@@ -16,7 +20,6 @@ class DateTime implements ValueObjectInterface
     public function __construct(Date $date, Time $time)
     {
         $this->date = $date;
-
         $this->time = $time;
     }
     

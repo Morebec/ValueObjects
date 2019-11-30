@@ -15,14 +15,17 @@ class Date implements ValueObjectInterface
     /** @var Month */
     private $month;
 
-    /** @var Day */
+    /** @var MonthDay */
     private $day;
 
-    public function __construct(Year $year, Month $month, Day $day)
+    public function __construct(Year $year, Month $month, MonthDay $day)
     {
         $this->year = $year;
         $this->month = $month;
         $this->day = $day;
+        
+        // TODO Assert date is valid
+        // february 31st is not valid
     }
 
     /**
@@ -32,7 +35,7 @@ class Date implements ValueObjectInterface
      */
     public function isEqualTo(ValueObjectInterface $valueObject): bool
     {
-        (string)$this === (string)$valueObject;
+        return (string)$this === (string)$valueObject;
     }
 
     /**
@@ -65,9 +68,9 @@ class Date implements ValueObjectInterface
 
     /**
      * Returns the day of the date
-     * @return mixed
+     * @return MonthDay
      */
-    public function getDay(): Day
+    public function getDay(): MonthDay
     {
         return $this->day;
     }
@@ -78,6 +81,6 @@ class Date implements ValueObjectInterface
      */
     public function now(): Date
     {
-        return new static(Year::now(), Month::now(), Day::now());
+        return new static(Year::now(), Month::now(), MonthDay::now());
     }
 }

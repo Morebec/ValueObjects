@@ -2,6 +2,9 @@
 
 namespace Morebec\ValueObjects\File;
 
+use Exception;
+use Generator;
+
 /**
  * Directory Value Object
  */
@@ -9,16 +12,19 @@ class Directory extends File
 {
     /**
      * Returns the files contained in the directory
-     * @return array
+     * @return Generator
      */
-    public function getFiles(): \Generator
+    public function getFiles(): Generator
     {
         $path = $this->getRealpath();
-        $systemFiles = scandir($path);
+        /** @var array $systemFiles */
+        $systemFiles = \scandir($path);
+        if (!$systemFiles) {
+            throw new Exception("Failed to scan directory: '$path'");
+        }
+        
         // remove '.' and '..'
-        $systemFiles = array_diff(scandir($path), array('.', '..'));
-
-        $files = [];
+        $systemFiles = \array_diff($systemFiles, ['.', '..']);
 
         foreach ($systemFiles as $file) {
             yield self::fromStringPath($path . '/' . $file);
