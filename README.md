@@ -25,7 +25,7 @@ To install the library in a project, add these lines to your `composer.json` con
         }
     ],
     "require": {
-        "morebec/value-objects": "1.0"
+        "morebec/value-objects": "^1.0"
     }
 }
 ```
