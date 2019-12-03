@@ -2,17 +2,21 @@
 
 namespace Morebec\ValueObjects\Person;
 
-use Assert\Assertion;
-use Morebec\ValueObjects\StringBasedValueObject;
+use Morebec\ValueObjects\Communication\PhoneNumber as BasePhoneNumber;
+
+@trigger_error(
+    sprintf(
+        'The "%s" class is deprecated since version 1.2 use "%s" instead.', 
+        PhoneNumber::class, 
+        BasePhoneNumber::class
+    ), 
+    E_USER_DEPRECATED
+);
 
 /**
  * PhoneNumber
+ * @deprecated since version 1.1.0, use Morebec\ValueObjects\Communication\EmailAddress instead.
  */
-class PhoneNumber extends StringBasedValueObject
+class PhoneNumber extends BasePhoneNumber
 {
-    public function __construct(string $phoneNumber)
-    {
-        Assertion::notBlank($phoneNumber);
-        parent::__construct($phoneNumber);
-    }
 }
