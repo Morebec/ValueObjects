@@ -2,23 +2,21 @@
 
 namespace Morebec\ValueObjects\Person;
 
-use Assert\Assertion;
-use Morebec\ValueObjects\StringBasedValueObject;
+use Morebec\ValueObjects\Communication\EmailAddress as BaseEmailAddress;
+
+@trigger_error(
+    sprintf(
+        'The "%s" class is deprecated since version 1.2 use "%s" instead.', 
+        EmailAddress::class, 
+        BaseEmailAddress::class
+    ), 
+    E_USER_DEPRECATED
+);
 
 /**
  * Represents an Email Address
+ * @deprecated since version 1.1.0, use Morebec\ValueObjects\Communication\EmailAddress instead.
  */
-final class EmailAddress extends StringBasedValueObject
+final class EmailAddress extends BaseEmailAddress
 {
-    public function __construct(string $address)
-    {
-        Assertion::email($address);
-
-        parent::__construct(strtolower($address));
-    }
-
-    public function getDomain(): string
-    {
-        return explode('@', $this->value)[1];
-    }
 }

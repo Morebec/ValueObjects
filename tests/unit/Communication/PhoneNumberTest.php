@@ -1,8 +1,6 @@
 <?php 
 
-namespace Morebec\ValueObjects\Person;
-
-use Morebec\ValueObjects\Person\PhoneNumber;
+use Morebec\ValueObjects\Communication\PhoneNumber;
 
 /**
  * PhoneNumber
