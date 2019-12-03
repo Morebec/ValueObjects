@@ -1,6 +1,6 @@
 <?php 
 
-use Morebec\ValueObjects\Person\EmailAddress;
+use Morebec\ValueObjects\Communication\EmailAddress;
 
 /**
  * Tests for Email address value object class
