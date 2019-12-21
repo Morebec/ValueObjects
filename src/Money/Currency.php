@@ -6,6 +6,9 @@ use Morebec\ValueObjects\ValueObjectInterface;
 
 /**
  * Currency
+ * @method static CAD(): Currency
+ * @method static USD(): Currency
+ * @method static EUR(): Currency
  */
 class Currency implements ValueObjectInterface
 {
@@ -23,18 +26,26 @@ class Currency implements ValueObjectInterface
     }
 
     /**
-     * Used so it is poossible to do things like
+     * Used so it is possible to do things like
      * Currency::CAD() using the currency code
+     * @param $method
+     * @param $arguments
+     * @return Currency
      */
     public static function __callStatic($method, $arguments)
     {
-        CurrencyCode::validateValue($method);
-        return new Currency(CurrencyCode::fromString($method));
+        return self::fromString($method);
+    }
+
+    public static function fromString(string $value): Currency
+    {
+        CurrencyCode::validateValue($value);
+        return new static(CurrencyCode::fromString($value));
     }
 
     /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
+     * Indicates if this value object is equal to another value object
+     * @param  ValueObjectInterface $valueObject other value object to compare to
      * @return boolean                           true if equal otherwise false
      */
     public function isEqualTo(ValueObjectInterface $valueObject): bool
