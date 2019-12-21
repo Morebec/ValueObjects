@@ -9,8 +9,4 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Extension extends StringBasedValueObject
 {
-    public function __construct(string $extension)
-    {
-        parent::__construct($extension);
-    }
 }

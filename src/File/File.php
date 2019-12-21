@@ -18,17 +18,10 @@ class File implements ValueObjectInterface
         $this->path = $path;
     }
 
-    /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
-     * @return boolean                           true if equal otherwise false
-     */
     public function isEqualTo(ValueObjectInterface $valueObject): bool
     {
         return (string)$this === (string)$valueObject;
     }
-
-
 
     /**
      * Indicates if a file exists or not
@@ -51,7 +44,7 @@ class File implements ValueObjectInterface
         }
         $pathStr = realpath($this->path);
         if (!$pathStr) {
-            throw new Exception('Invalid path: ' . $this->path);
+            throw new InvalidFilePathException('Invalid path: ' . $this->path);
         }
         
         return new Path($pathStr);
@@ -69,7 +62,7 @@ class File implements ValueObjectInterface
                 'Failed to load content of file: ' . $this->path
             );
         }
-        
+
         return new FileContent($content);
     }
 

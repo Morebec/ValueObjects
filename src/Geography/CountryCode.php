@@ -249,7 +249,7 @@ class CountryCode extends BasicEnum
     const ZM = "ZM";
     const ZW = "ZW";
 
-    public static function fromString(string $code)
+    public static function fromString(string $code): CountryCode
     {
         return new static($code);
     }

@@ -9,8 +9,4 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Title extends StringBasedValueObject
 {
-    public function __construct(string $title)
-    {
-        parent::__construct($title);
-    }
 }

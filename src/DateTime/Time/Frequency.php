@@ -31,11 +31,6 @@ class Frequency implements ValueObjectInterface
         $this->nbTimes = $nbTimes;
     }
 
-    /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
-     * @return boolean                           true if equal otherwise false
-     */
     public function isEqualTo(ValueObjectInterface $valueObject): bool
     {
         return (string)$this === (string)$valueObject;
@@ -86,7 +81,7 @@ class Frequency implements ValueObjectInterface
 
         // Parse string according to "x" symbol
         try {
-            list($nbTimes, $timeAmount) = explode('X', $frequency);
+            [$nbTimes, $timeAmount] = explode('X', $frequency);
         } catch (Exception $e) {
             throw new InvalidArgumentException(
                 "Malformed frequency string: No 'x' character found in '$frequency'"
@@ -96,7 +91,7 @@ class Frequency implements ValueObjectInterface
         // Validate Number of times
         $nbTimes = trim($nbTimes);
         Assertion::numeric($nbTimes);
-        $nbTimes = intval($nbTimes);
+        $nbTimes = (int)$nbTimes;
 
         // Validate time amount
         Assertion::notBlank(
@@ -113,7 +108,7 @@ class Frequency implements ValueObjectInterface
             );
         }
         Assertion::numeric($amount);
-        $amount = floatval($amount);
+        $amount = (float)$amount;
 
         return new Frequency($nbTimes, new TimeAmount($amount, TimeUnit::fromString($unit)));
     }

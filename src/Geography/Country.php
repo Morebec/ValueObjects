@@ -22,11 +22,6 @@ class Country implements ValueObjectInterface
         return $this->code;
     }
 
-    /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
-     * @return boolean                           true if equal otherwise false
-     */
     public function isEqualTo(ValueObjectInterface $valueObject): bool
     {
         return (string)$this === (string)$valueObject;
@@ -45,6 +40,9 @@ class Country implements ValueObjectInterface
     /**
      * Used so it is poossible to do things like
      * Country::US() by using the Country code
+     * @param $method
+     * @param $arguments
+     * @return Country
      */
     public static function __callStatic($method, $arguments)
     {

@@ -11,7 +11,7 @@ use Morebec\ValueObjects\IntBasedValueObject;
 class Minute extends IntBasedValueObject
 {
     /** there are 60 minutes in an hour (0 - 59) */
-    const MAX_NUMBER = 59;
+    public const MAX_NUMBER = 59;
 
     public function __construct(int $nthMinute)
     {

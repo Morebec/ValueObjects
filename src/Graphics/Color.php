@@ -33,9 +33,9 @@ class Color implements ValueObjectInterface
         $hex = str_replace('#', '', $hex);
 
         // Make sure it is either #RRGGBB or #RRGGBBAA
-        $codeLenth = strlen($hex);
-        if ($codeLenth === 6) {
-            $hex = $hex . 'FF';
+        $codeLength = strlen($hex);
+        if ($codeLength === 6) {
+            $hex .= 'FF';
         }
 
         Assertion::length(
@@ -46,10 +46,10 @@ class Color implements ValueObjectInterface
 
         list($r, $g, $b, $a) = array_map('hexdec', str_split($hex, 2));
 
-        $r = \intval($r);
-        $g = \intval($g);
-        $b = \intval($b);
-        $a = \intval($a);
+        $r = (int)$r;
+        $g = (int)$g;
+        $b = (int)$b;
+        $a = (int)$a;
         
         return new Color($r, $g, $b, $a);
     }
@@ -119,11 +119,6 @@ class Color implements ValueObjectInterface
         return $this->toHex();
     }
 
-    /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
-     * @return boolean                           true if equal otherwise false
-     */
     public function isEqualTo(ValueObjectInterface $valueObject): bool
     {
         return ((string)$this) == ((string)$valueObject);

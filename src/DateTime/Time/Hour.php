@@ -11,7 +11,7 @@ use Morebec\ValueObjects\IntBasedValueObject;
 class Hour extends IntBasedValueObject
 {
     /** There are 24 hours in a day (0-23) */
-    const MAX_NUMBER = 23;
+    public const MAX_NUMBER = 23;
     
     public function __construct(int $nthHour)
     {
