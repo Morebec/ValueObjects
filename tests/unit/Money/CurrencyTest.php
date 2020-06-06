@@ -1,25 +1,14 @@
-<?php 
+<?php
 
+use Codeception\Test\Unit;
 use Morebec\ValueObjects\Money\Currency;
 use Morebec\ValueObjects\Money\CurrencyCode;
 
 /**
  * CurrencyTest
  */
-class CurrencyTest extends \Codeception\Test\Unit
+class CurrencyTest extends Unit
 {
-    public function testInvalidCurrencyCodeThrowsException()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $c = new Currency(new CurrencyCode('WRONG_CODE'));
-    }
-
-    public function testInvalidCurrencyCodeStaticGenerationThrowsException()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $c = Currency::WRONG();
-    }
-
     public function testValidCurrencyCode()
     {
         $c = new Currency(new CurrencyCode(CurrencyCode::CAD));
