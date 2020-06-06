@@ -25,6 +25,11 @@ class Currency implements ValueObjectInterface
         return $this->code;
     }
 
+    public static function withCode(string $code)
+    {
+        return new self(new CurrencyCode($code));
+    }
+
     /**
      * Used so it is possible to do things like
      * Currency::CAD() using the currency code
@@ -34,12 +39,11 @@ class Currency implements ValueObjectInterface
      */
     public static function __callStatic($method, $arguments)
     {
-        return self::fromString($method);
+        return static::fromString($method);
     }
 
     public static function fromString(string $value): Currency
     {
-        CurrencyCode::validateValue($value);
         return new static(CurrencyCode::fromString($value));
     }
 

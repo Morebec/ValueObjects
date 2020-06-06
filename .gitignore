@@ -3,3 +3,4 @@ coverage.*
 .phpintel/
 /nbproject/
 /.idea/
+/vendor/

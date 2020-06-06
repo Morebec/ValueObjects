@@ -3,7 +3,7 @@
     "description": "PHP ValueObjects library",
     "type": "library",
     "require": {
-        "php": "^7",
+        "php": "^7.1",
         "beberlei/assert": "^3.2"
     },
     "authors": [

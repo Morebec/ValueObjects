@@ -15,7 +15,7 @@ abstract class BasicEnum implements ValueObjectInterface
 
     public function __construct($value)
     {
-        self::validateValue($value);
+        static::validateValue($value);
         $this->value = $value;
     }
 
@@ -72,7 +72,7 @@ abstract class BasicEnum implements ValueObjectInterface
      */
     public static function isValidName(string $name, bool $strict = false): bool
     {
-        $constants = self::getConstants();
+        $constants = static::getConstants();
 
         if ($strict) {
             return array_key_exists($name, $constants);
@@ -90,13 +90,13 @@ abstract class BasicEnum implements ValueObjectInterface
      */
     public static function isValidValue($value, bool $strict = true): bool
     {
-        $values = array_values(self::getConstants());
+        $values = array_values(static::getConstants());
         return in_array($value, $values, $strict);
     }
 
     public static function getValues(): array
     {
-        return array_values(self::getConstants());
+        return array_values(static::getConstants());
     }
 
     /**
@@ -107,7 +107,7 @@ abstract class BasicEnum implements ValueObjectInterface
      */
     public static function validateValue($value): void
     {
-        if (!self::isValidValue($value)) {
+        if (!static::isValidValue($value)) {
             throw new \InvalidArgumentException("Invalid value: $value", 1);
         }
     }
@@ -118,7 +118,7 @@ abstract class BasicEnum implements ValueObjectInterface
      */
     public static function getNamesAndValues(): array
     {
-        return self::getConstants();
+        return static::getConstants();
     }
     
     /**

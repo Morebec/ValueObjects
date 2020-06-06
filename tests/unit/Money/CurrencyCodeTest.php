@@ -1,14 +1,21 @@
-<?php 
+<?php
 
+use Codeception\Test\Unit;
 use Morebec\ValueObjects\Money\CurrencyCode;
 
 /**
  * CurrencyCodeTest
  */
-class CurrencyCodeTest extends \Codeception\Test\Unit
+class CurrencyCodeTest extends Unit
 {
+    public function testConstructWithNonDefaultCode()
+    {
+        $c = new CurrencyCode('BTC');
+        $this->assertEquals('BTC', $c);
+    }
     public function testEqualityWithString()
     {
+        CurrencyCode::EUR();
         $c = new CurrencyCode(CurrencyCode::USD);
         $this->assertEquals('USD', $c);
     }

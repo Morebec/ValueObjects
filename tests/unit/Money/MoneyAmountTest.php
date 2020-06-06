@@ -8,13 +8,7 @@ use Morebec\ValueObjects\Money\MoneyAmount;
  */
 class MoneyAmountTest extends \Codeception\Test\Unit
 {
-    public function testInvalidCodeThrowsException()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        new MoneyAmount(500, Currency::WRONG());
-    }
-
-    public function testValidCode(): void
+    public function testValidCode()
     {
         new MoneyAmount(500, Currency::USD());
     }
