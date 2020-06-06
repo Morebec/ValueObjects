@@ -9,8 +9,4 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Tag extends StringBasedValueObject
 {
-    public function __construct(string $tag)
-    {
-        parent::__construct($tag);
-    }
 }

@@ -9,11 +9,6 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class Description extends StringBasedValueObject
 {
-    public function __construct(string $description)
-    {
-        parent::__construct($description);
-    }
-
     /**
      * Indicates if the description contains a substring
      * @param  string $subString substring to find

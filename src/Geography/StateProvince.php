@@ -10,7 +10,7 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 class StateProvince extends StringBasedValueObject
 {
-    function __construct(string $value)
+    public function __construct(string $value)
     {
         Assertion::notBlank($value);
         parent::__construct($value);

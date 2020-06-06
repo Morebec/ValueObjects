@@ -26,11 +26,6 @@ class Time implements ValueObjectInterface
         $this->s = $s;
     }
 
-    /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
-     * @return boolean                           true if equal otherwise false
-     */
     public function isEqualTo(ValueObjectInterface $valueObject): bool
     {
         return (string)$this === (string)$valueObject;
@@ -69,7 +64,7 @@ class Time implements ValueObjectInterface
     }
 
     /**
-     * Returns the secounds of the time
+     * Returns the seconds of the time
      * @return Second
      */
     public function getSecond(): Second

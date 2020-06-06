@@ -24,8 +24,9 @@ class Word extends StringBasedValueObject
     public function getChars(): array
     {
         $chars = [];
-        
-        for ($i=0; $i < strlen($this->value); $i++) {
+
+        $len = strlen($this->value);
+        for ($i=0; $i < $len; $i++) {
             $chars[] = new Char($this->value[$i]);
         }
 

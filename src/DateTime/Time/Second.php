@@ -11,7 +11,7 @@ use Morebec\ValueObjects\IntBasedValueObject;
 class Second extends IntBasedValueObject
 {
     /** there are 60 seconds in a minute (0 - 59) */
-    const MAX_NUMBER = 59;
+    public const MAX_NUMBER = 59;
 
     public function __construct(int $nthSecond)
     {

@@ -13,6 +13,8 @@ class Directory extends File
     /**
      * Returns the files contained in the directory
      * @return Generator
+     * @throws InvalidFilePathException
+     * @throws FileSystemScanFailedException
      */
     public function getFiles(): Generator
     {
@@ -20,7 +22,7 @@ class Directory extends File
         /** @var array $systemFiles */
         $systemFiles = \scandir($path);
         if (!$systemFiles) {
-            throw new Exception("Failed to scan directory: '$path'");
+            throw new FileSystemScanFailedException("Failed to scan directory: '$path'");
         }
         
         // remove '.' and '..'
@@ -34,6 +36,8 @@ class Directory extends File
     /**
      * Returns the number of files in the direcotry
      * @return int
+     * @throws FileSystemScanFailedException
+     * @throws InvalidFilePathException
      */
     public function getNbFiles(): int
     {

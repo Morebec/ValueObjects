@@ -10,9 +10,9 @@ use Morebec\ValueObjects\StringBasedValueObject;
  */
 final class PlainTextPassword extends StringBasedValueObject
 {
-    const MIN_LENGTH = 6;
+    public const MIN_LENGTH = 6;
 
-    const MAX_LENGTH = 4096; // Security
+    public const MAX_LENGTH = 4096; // Security
 
     public function __construct(string $plainTextPassword)
     {
