@@ -95,10 +95,4 @@ class MoneyAmountTest extends \Codeception\Test\Unit
         $a2 = new MoneyAmount(500, Currency::CAD());
         $this->assertTrue($a->isEqualTo($a2));
     }
-
-    public function test__callStaticWithInvalidCodeThrowsException()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $a = MoneyAmount::MONEY(500);
-    }
 }
