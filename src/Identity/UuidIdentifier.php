@@ -37,4 +37,14 @@ class UuidIdentifier extends StringBasedValueObject
         $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
+
+    /**
+     * Constructs an instance of this value object from a string value
+     * @param string $value
+     * @return static
+     */
+    public static function fromString(string $value): self
+    {
+        return new static($value);
+    }
 }

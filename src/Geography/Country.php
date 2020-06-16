@@ -17,6 +17,16 @@ class Country implements ValueObjectInterface
         $this->code = new CountryCode($countryCode);
     }
 
+    /**
+     * Constructs an instance of this value object from a string value
+     * @param string $value
+     * @return static
+     */
+    public static function fromString(string $value): self
+    {
+        return new static($value);
+    }
+
     public function getCode(): CountryCode
     {
         return $this->code;

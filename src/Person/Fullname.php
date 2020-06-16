@@ -3,61 +3,30 @@
 namespace Morebec\ValueObjects\Person;
 
 use Assert\Assertion;
+use Morebec\ValueObjects\StringBasedValueObject;
 use Morebec\ValueObjects\ValueObjectInterface;
 
 /**
  * Fullname
  */
-final class Fullname implements ValueObjectInterface
+final class Fullname extends StringBasedValueObject
 {
-    /** @var string */
-    private $firstname;
-    
-    /** @var string */
-    private $lastname;
-
-    public function __construct(string $firstname, string $lastname)
+    public function __construct(string $fullname)
     {
-        if ($firstname !== '') {
-            Assertion::minLength($firstname, 2);
+        if ($fullname !== '') {
+            Assertion::minLength($fullname, 2);
         }
 
-        if ($lastname !== '') {
-            Assertion::minLength($lastname, 2);
-        }
-
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-    }
-
-    public function __toString()
-    {
-        return $this->getFirstname() . ' ' . $this->getLastname();
+        parent::__construct($fullname);
     }
 
     /**
-     * @return string
+     * Constructs an instance of this value object from a string value
+     * @param string $value
+     * @return static
      */
-    public function getFirstname(): string
+    public static function fromString(string $value): self
     {
-        return $this->firstname;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastname(): string
-    {
-        return $this->lastname;
-    }
-
-    /**
-     * Indicates if this value object is equal to abother value object
-     * @param  ValueObjectInterface $valueObject othervalue object to compare to
-     * @return boolean                           true if equal otherwise false
-     */
-    public function isEqualTo(ValueObjectInterface $valueObject): bool
-    {
-        return (string)$this === (string)$valueObject;
+        return new static($value);
     }
 }

@@ -244,7 +244,7 @@ class CurrencyCode extends BasicEnum
         // Skip to allow custom currency codes
     }
 
-    public static function fromString(string $code)
+    public static function fromString(string $code): self
     {
         return new static($code);
     }
