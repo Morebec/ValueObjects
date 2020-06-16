@@ -2,7 +2,6 @@
 
 namespace Morebec\ValueObjects\File;
 
-use Exception;
 use Generator;
 
 /**

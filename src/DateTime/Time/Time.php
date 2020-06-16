@@ -2,7 +2,6 @@
 
 namespace Morebec\ValueObjects\DateTime\Time;
 
-use Assert\Assertion;
 use Morebec\ValueObjects\ValueObjectInterface;
 
 /**

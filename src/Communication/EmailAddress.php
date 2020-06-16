@@ -3,7 +3,6 @@
 namespace Morebec\ValueObjects\Communication;
 
 use Assert\Assertion;
-use Morebec\ValueObjects\Person\EmailAddress as BaseEmailAddress;
 use Morebec\ValueObjects\StringBasedValueObject;
 
 /**

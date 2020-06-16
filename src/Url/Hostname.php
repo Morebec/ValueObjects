@@ -3,7 +3,6 @@
 namespace Morebec\ValueObjects\Url;
 
 use Morebec\ValueObjects\StringBasedValueObject;
-use Morebec\ValueObjects\ValueObjectInterface;
 
 /**
  * Hostname

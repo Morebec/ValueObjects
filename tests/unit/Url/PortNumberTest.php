@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Morebec\ValueObjects\Url\PortNumber;
 

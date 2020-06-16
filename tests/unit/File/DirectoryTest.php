@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Morebec\ValueObjects\File\Directory;
 use Morebec\ValueObjects\File\Path;

@@ -2,7 +2,7 @@
 
 namespace Morebec\ValueObjects\Money;
 
-use \InvalidArgumentException;
+use InvalidArgumentException;
 use Morebec\ValueObjects\ValueObjectInterface;
 
 /**

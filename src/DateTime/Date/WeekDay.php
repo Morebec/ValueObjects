@@ -4,7 +4,6 @@ namespace Morebec\ValueObjects\DateTime\Date;
 
 use Assert\Assertion;
 use Morebec\ValueObjects\BasicEnum;
-use Morebec\ValueObjects\IntBasedValueObject;
 
 /**
  * Represents a certain day of the week

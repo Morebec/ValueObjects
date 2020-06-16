@@ -2,8 +2,6 @@
 
 namespace Morebec\ValueObjects;
 
-use Morebec\ValueObjects\ValueObjectInterface;
-
 /**
  * Class used to represent ValueObjects relying on a single string literal
  */
