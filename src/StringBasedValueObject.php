@@ -18,6 +18,16 @@ abstract class StringBasedValueObject implements ValueObjectInterface
     }
 
     /**
+     * Constructs an instance of this value object from a string value
+     * @param string $value
+     * @return static
+     */
+    public static function fromString(string $value): self
+    {
+        return new static($value);
+    }
+
+    /**
      * Returns a string representation of the value object
      *
      * @return string
