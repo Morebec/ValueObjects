@@ -51,11 +51,4 @@ class CurrencyTest extends Unit
         $cad = Currency::CAD();
         $this->assertTrue($c->isEqualTo($cad));
     }
-
-    public function testFromStringWithWrongCodeThrowsException(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $c = Currency::fromString('WRONG_CODE');
-        $cad = Currency::CAD();
-    }
 }
