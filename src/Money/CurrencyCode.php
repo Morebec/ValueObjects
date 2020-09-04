@@ -240,7 +240,6 @@ class CurrencyCode extends BasicEnum
 
     public static function validateValue($value): void
     {
-        echo 'OK';
         // Skip to allow custom currency codes
     }
 
