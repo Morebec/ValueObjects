@@ -203,6 +203,7 @@ class CountryCode extends BasicEnum
     const SG = "SG";
     const SK = "SK";
     const SI = "SI";
+    const RS = "RS";
     const SB = "SB";
     const SO = "SO";
     const ZA = "ZA";
